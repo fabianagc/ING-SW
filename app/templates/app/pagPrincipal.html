@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% extends "./pagBase.html" %}
+
+    {%load static%}
+    {% block body %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabajo Futuro</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <link rel="stylesheet" href="{%static 'app/css/css.css'%}">
+  <link rel="stylesheet" href="{%static 'app/img'%}">
+</head>
+  <header>
+</header>
+        <section class="hero_container container">
+            <h1 class="hero_tittle">Encuentra las vacaciones de tus sueños</h1>
+            <p class="hero_paragraph">Hay cerca de 250 habitaciones disponibles</p>
+            <a href="#"class="cta">¡Registrate ahora!</a>
+         
+        </section>
+    </header>
+    <main>
+        <section class="container about">
+            <h2 class="subtitle">¿Que tipo de habitacion buscas?</h2>
+            <p class="about_paragraph">Este hotel tiene todo lo que necesitas</p>
+
+            <div class="about_main">
+                <article class="about_icons">
+                    <img src="{%static 'app/img/arrow.svg' %}" class="about_icon" >
+                    <h3 class="about_title">Habitaciones para luna de miel</h3>
+                    <p class="about_paragraph">¡Experimenta el lujo y la comodidad en nuestra exclusiva habitación matrimonial de hotel! Disfruta de una amplia cama, baño privado y todas las comodidades que necesitas para una escapada romántica inolvidable. ¡Reserva hoy y vive la experiencia de tu vida!</p>
+                </article>
+
+                <article class="about_icons">
+                    <img src="{%static 'app/img/arrow.svg' %}" class="about_icon" >
+                    <h3 class="about_title">Habitacion para escapada familiar</h3>
+                    <p class="about_paragraph">¡Descubre la comodidad y la diversión en nuestra espaciosa habitación familiar de hotel! Con camas cómodas para toda la familia, baño privado y una variedad de comodidades para todas las edades. ¡Reserva ahora y crea recuerdos inolvidables juntos!</p>
+                </article>
+
+                <article class="about_icons">
+                    <img src="{%static 'app/img/arrow.svg' %}" class="about_icon" >
+                    <h3 class="about_title">Habitaciones para viajes de trabajos</h3>
+                    <p class="about_paragraph">¡Optimiza tu viaje de trabajo con nuestra habitación para viajeros de negocios! Ofrecemos un espacio tranquilo y funcional con escritorio, acceso a internet de alta velocidad, baño privado y todas las comodidades necesarias para que tu estancia sea productiva y relajante. ¡Reserva ahora y maximiza tu eficiencia en cada viaje!</p>
+                </article>
+            </div>
+        </section>
+        <section class="knowledged">
+            <div class="knowledger_container container">
+                <div class="knowledged_texts">                    
+                    <h2 class="subtitle">
+                        Prometemos una experiencia excepcional en nuestras habitaciones de hotel. Comodidades de primera y un servicio inolvidable te esperan. ¡Reserva ahora y disfruta del buen pasar que te ofrecemos!</h2>
+                    <p class="knowledger_paragraph">
+                        Tenemos una variedad de habitaciones disponibles para satisfacer tus necesidades. Ya sea que busques una habitación matrimonial, familiar o para viajeros de negocios, estamos listos para recibirte. Explora nuestras opciones y reserva la que mejor se adapte a tu estancia. ¡Tu comodidad es nuestra prioridad!</p>
+                    <a href="#" class="cta">Revisa las habitaciones disponibles</a>
+                </div>
+                <figure class="knowledged_picture">
+                    <img src= "{%static 'app/img/Hotel1.jpg' %}" class="knowledged_img">
+                </figure>
+            </div>
+        </section>
+    </main>
+    <section class="testimony">
+        <div class="testimony_container container">
+            <section class="testimony_body testimony_body--show data-id=1 ">
+                <div class="testimony_texts">
+                    <h2 class="subtitle">Mi Nombre es Alejandra Reyes, <span class="testimony_course">Analista de Sistemas</span></h2>
+                    <p class="testimony_review">Necesitaba hospedaje para un viaje de trabajo urgente, y busqué en esta página y realmente me han ayudado mucho. Los recomiendo al 100% ya que gracias a ellos encontré el lugar ideal para hospedarme sin pagar de más.</p>
+                </div>
+                <figure class="testimony_picture">
+                    <img src="{%static 'app/img/Hotel2.jpg' %}" class="testimony_img">
+                </figure>
+            </section> 
+
+        </div>
+    </section>
+
+    <script src="./js/slyder.js"></script>
+
+    
+   
+</body>
+{% endblock %}

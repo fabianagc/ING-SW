@@ -1,0 +1,64 @@
+{% extends "./pagBase.html" %}
+
+{% block title %}Panel de administracion{% endblock %}
+
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="text-center py-4 bg-primary text-white">Panel de Administración</h1>
+    </div>
+</div>
+<div class="countainerG py-4">
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <H2>Gestion de clientes</H2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/pagRegistro/" method="POST">{% csrf_token %}
+                              
+                <div class="form-group">
+                    <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Codigo" minlength="1" maxlength="15" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtCorreo" name="txtCorreo" class="form-control" placeholder="Correo" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block text-white"> Guardar </button>
+                </div>
+            </div>            
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1> Lista de clientes</h1>
+        <div class="table-responsive py-2" >
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in clientes %}
+                    <tr>
+                        <td>{{x.codigo}}</td>
+                        <td>{{x.p_nombre}}</td>
+                        <td>{{x.correo}}</td>
+                        <td><a href="/pagEditar/{{x.codigo}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="/pagEliminar/{{x.codigo}}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>"
+    </div>
+</div>
+</div>
+{% endblock %}
