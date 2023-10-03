@@ -1,0 +1,39 @@
+{% extends "./pagBase.html" %}
+
+{% block title %}Panel de administracion{% endblock %}
+
+
+{% block body %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <H2>Edicion de clientes</H2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/pagEdicionH/" method="POST">{% csrf_token %}                                  
+                    <div class="form-group">
+                        <input type="text" id="txtNumH" name="txtNumH" value="{{habitacion.num_habitacion}}" class="form-control" placeholder="Nro habitacion" maxlength="15" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTipo" name="txtTipo" value="{{habitacion.tipo}}" class="form-control" placeholder="Tipo" maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtPrecio" name="txtPrecio" value="{{habitacion.precio}}" class="form-control" placeholder="Precio" maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtOcupacion" name="txtOcupacion" value="{{habitacion.estado_ocupacion}}" class="form-control" placeholder="Ocupacion" maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtCapacidad" name="txtCapacidad" value="{{habitacion.capacidad}}" class="form-control" placeholder="Capacidad" maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtDescripcion" name="txtDescripcion" value="{{habitacion.descripcion}}" class="form-control" placeholder="Descripcion" maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white"> Guardar </button>
+                    </div>
+                </div>            
+            </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "./pagBase.html" %}
+
+{% block title %}Panel de administracion{% endblock %}
+
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="text-center py-4 bg-primary text-white">Panel de Administración</h1>
+    </div>
+</div>
+<div class="countainerG py-4">
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <H2>Gestion de Habitaciones</H2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/pagRegistroH/" method="POST">{% csrf_token %}
+                              
+                <div class="form-group">
+                    <input type="text" id="txtNumH" name="txtNumH" class="form-control" placeholder="Nro habitacion" minlength="1" maxlength="15" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtTipo" name="txtTipo" class="form-control" placeholder="Tipo habitacion" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtPrecio" name="txtPrecio" class="form-control" placeholder="Precio" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtOcupacion" name="txtOcupacion" class="form-control" placeholder="Estado de ocupacion" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtCapacidad" name="txtCapacidad" class="form-control" placeholder="Capacidad" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block text-white"> Guardar </button>
+                </div>
+            </div>            
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1> Lista de habitaciones</h1>
+        <div class="table-responsive py-2" >
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Numero</th>
+                        <th>Tipo</th>
+                        <th>Ocupacion</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in habitacion %}
+                    <tr>
+                        <td>{{x.num_habitacion}}</td>
+                        <td>{{x.tipo}}</td>
+                        <td>{{x.estado_ocupacion}}</td>
+                        <td><a href="/pagEditarH/{{x.num_habitacion}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="/pagEliminarH/{{x.num_habitacion}}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>"
+    </div>
+</div>
+</div>
+{% endblock %}

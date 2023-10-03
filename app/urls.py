@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import pagLogin, pagADM, pagBase, pagPrincipal
+from .views import pagLogin, pagADM, pagBase, pagPrincipal, pagHabitacion
 from . import views
-
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', pagLogin, name="pagLogin"),
@@ -10,9 +10,13 @@ urlpatterns = [
 
     path('pagADM/', pagADM, name="pagADM"),
 
+    path('pagHabitacion/', pagHabitacion, name="pagHabitacion"),
+
     path('pagBase/', pagBase, name="pagBase"),
 
     path('pagPrincipal/', pagPrincipal, name="pagPrincipal"),
+
+
 
     path('pagRegistro/', views.pagRegistro),
 
@@ -21,5 +25,15 @@ urlpatterns = [
     path('pagEditar/<id>/', views.pagEditar),
 
     path('pagEdicion/', views.pagEdicion),
+
+
+
+    path('pagRegistroH/', views.pagRegistroH),
+
+    path('pagEliminarH/<id>/', views.pagEliminarH),
+
+    path('pagEditarH/<id>/', views.pagEditarH),
+
+    path('pagEdicionH/', views.pagEdicionH),
 
 ]
