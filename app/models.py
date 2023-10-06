@@ -20,7 +20,13 @@ class habitacion(models.Model):
     num_habitacion = models.CharField(primary_key=True, max_length=15)
     tipo = models.CharField(max_length=20)
     precio = models.CharField(max_length=20)
-    estado_ocupacion = models.CharField(max_length=20)
+    
+    ESTADO_CHOICES = (
+        ('Ocupada', 'Ocupada'),
+    )
+    
+    estado_ocupacion = models.CharField(max_length=20, choices=ESTADO_CHOICES)
+    estado_seleccionado = models.CharField(max_length=20, choices=ESTADO_CHOICES, blank=True, null=True)
     capacidad = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=20)
 

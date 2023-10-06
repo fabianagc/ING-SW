@@ -3,10 +3,14 @@ from .models import clientes, habitacion
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 
 def pagPrincipal(request):
     return render (request,"app/pagPrincipal.html")
+
+def pagFecha(request):
+    return render (request,"app/pagFecha.html")
 
 def pagLogin(request):
     return render (request,"app/pagLogin.html")
@@ -88,3 +92,31 @@ def pagEdicionH(request):
     e_habitacion.save()
     return redirect('pagHabitacion')
 
+def pagCheck(request):
+    if request.method == 'POST':
+        habitaciones_ids = request.POST.getlist('habitaciones_seleccionadas')
+        nuevo_estado = request.POST['nuevo_estado']
+        todas_habitaciones = habitacion.objects.all()
+        for habitacion_obj in todas_habitaciones:
+            if habitacion_obj.num_habitacion in habitaciones_ids:
+                habitacion_obj.estado_ocupacion = nuevo_estado
+                habitacion_obj.save()
+        habitaciones = habitacion.objects.all()
+
+        return render(request, "app/pagCheck.html", {"habitaciones": habitaciones, "nuevo_estado": nuevo_estado})
+
+    habitaciones = habitacion.objects.all()
+    return render(request, "app/pagCheck.html", {"habitaciones": habitaciones})
+
+def pagFecha(request):
+    if request.method == 'POST':
+        fecha_actual = datetime.now().date() 
+        fecha_seleccionada_1 = request.POST['fecha_1']
+        fecha_seleccionada_2 = request.POST['fecha_2']
+        
+        # Realiza cualquier procesamiento adicional aquí si es necesario
+        
+        # Redirige al usuario a la vista "pagCheck"
+        return redirect('pagCheck')
+
+    return render(request, "app/pagFecha.html")
