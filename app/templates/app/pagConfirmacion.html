@@ -1,0 +1,31 @@
+{% extends "./pagBase.html" %}
+
+{% block title %}Reservas{% endblock %}
+
+{% block body %}
+<h1 class="display-4">Lista de Reservas</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <ul class="list-group">
+                {% for reserva in reservas %}
+                    <li class="list-group-item">
+                        <h4 class="mb-3">Reserva {{ reserva.num_reserva }}</h4>
+                        <p><strong>Fecha de Entrada:</strong> {{ reserva.fecha_entrada }}</p>
+                        <p><strong>Fecha de Salida:</strong> {{ reserva.fecha_salida }}</p>
+                        <p><strong>Estado de Reserva:</strong> {{ reserva.estado_reserva }}</p>
+                        <p><strong>Cliente:</strong> {{ reserva.cliente.nombre }} (Puedes acceder a los campos del cliente si el ForeignKey se llama 'cliente' y tiene un campo 'nombre')</p>
+                        <p><strong>Número de Personas:</strong> {{ reserva.nro_personas }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2 text-center">
+            <a href="{% url 'pagPrincipal' %}" class="btn btn-primary">Finalizar</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

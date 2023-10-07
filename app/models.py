@@ -30,14 +30,12 @@ class habitacion(models.Model):
     capacidad = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=20)
 
-class Reserva(models.Model):
-    num_reserva = models.CharField(primary_key=True, max_length=15)
-    fecha_entrada = models.CharField(max_length=20)
-    fecha_salida = models.CharField(max_length=20)
+class reserva(models.Model):
+    num_reserva = models.AutoField(primary_key=True)
+    fecha_entrada = models.DateField(max_length=20)
+    fecha_salida = models.DateField(max_length=20)
     estado_reserva = models.CharField(max_length=20)
     cliente = models.ForeignKey('Clientes', on_delete=models.CASCADE)
     nro_personas = models.CharField(max_length=20)
-    estado_pago = models.CharField(max_length=20)
-    medio_pago = models.CharField(max_length=20)
-    comentario = models.CharField(max_length=20)
+
 

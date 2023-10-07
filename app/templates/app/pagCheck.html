@@ -16,11 +16,12 @@
                 <div class="card-body">
                     <form method="post">
                         {% csrf_token %}
-                        <label for="nuevo_estado">Nuevo Estado de Ocupación:</label>
+                        <label for="nuevo_estado">Estado: </label>
                         <select id="nuevo_estado" name="nuevo_estado">
                             <option value="Ocupada">Reservar</option>
-
                         </select>
+                        <h10>Cantidad de personas</h10> 
+                        <input name="number" type="number" id="numeroInput" min="1" max="4" placeholder="">
 
                         <div class="habitaciones-buttons">
                             <div class="row">

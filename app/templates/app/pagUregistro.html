@@ -2,6 +2,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 
+
 <div class="row">
     <div class="col-sm-12">
         <h1 class="text-center py-4 bg-primary text-white">Panel de Administración</h1>
@@ -10,28 +11,28 @@
 <div class="countainerG py-4">
 <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-        <H2>Gestion de Habitaciones</H2>
+        <H2>Gestion de reservas</H2>
         <div class="card">
             <div class="card-body">
-                <form action="/pagRegistroH/" method="POST">{% csrf_token %}
+                <form action="/pagUregistro/" method="POST">{% csrf_token %}
                               
                 <div class="form-group">
-                    <input type="text" id="txtNumH" name="txtNumH" class="form-control" placeholder="Nro habitacion" minlength="1" maxlength="15" required>
+                    <input type="text" id="txtReserva" name="txtReserva" class="form-control" placeholder="Numero reserva" minlength="1" maxlength="15" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="txtTipo" name="txtTipo" class="form-control" placeholder="Tipo habitacion" maxlength="50" required>
+                    <input type="date" id="txtFechaE" name="txtFechaE" class="form-control" placeholder="Fecha entrada" maxlength="50" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="txtPrecio" name="txtPrecio" class="form-control" placeholder="Precio" maxlength="50" required>
+                    <input type="date" id="txtFechaS" name="txtFechaS" class="form-control" placeholder="Fecha salida" maxlength="50" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="txtOcupacion" name="txtOcupacion" class="form-control" placeholder="Estado de ocupacion" maxlength="50" required>
+                    <input type="text" id="txtEstado" name="txtEstado" class="form-control" placeholder="Estado reserva" maxlength="50" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="txtCapacidad" name="txtCapacidad" class="form-control" placeholder="Capacidad" maxlength="50" required>
+                    <input type="text" id="txtCliente" name="txtCliente" class="form-control" placeholder="Cliente" maxlength="50" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion" maxlength="50" required>
+                    <input type="text" id="txtPersonas" name="txtPersonas" class="form-control" placeholder="Numero personas" maxlength="50" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success btn-block text-white"> Guardar </button>
@@ -41,25 +42,25 @@
 
     </div>
     <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-        <h1> Lista de habitaciones</h1>
+        <h1> Lista de reservas</h1>
         <div class="table-responsive py-2" >
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Numero</th>
-                        <th>Tipo</th>
-                        <th>Ocupacion</th>
+                        <th>Reserva</th>
+                        <th>Cliente</th>
+                        <th>Hospedantes</th>
                         <th colspan="2">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for x in habitacion %}
+                    {% for x in reserva %}
                     <tr>
-                        <td>{{x.num_habitacion}}</td>
-                        <td>{{x.tipo}}</td>
-                        <td>{{x.estado_ocupacion}}</td>
-                        <td><a href="/pagEditarH/{{x.num_habitacion}}" class="btn btn-info">Editar</a></td>
-                        <td><a href="/pagEliminarH/{{x.num_habitacion}}" class="btn btn-danger">Eliminar</a></td>
+                        <td>{{x.num_reserva}}</td>
+                        <td>{{x.cliente}}</td>
+                        <td>{{x.nro_personas}}</td>
+                        <td><a href="/pagEditarR/{{x.num_reserva}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="/pagEliminarR/{{x.num_reserva}}" class="btn btn-danger">Eliminar</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -68,3 +69,4 @@
     </div>
 </div>
 </div>
+

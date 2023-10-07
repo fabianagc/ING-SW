@@ -242,3 +242,23 @@
 }
 
 /*FIN PAGINA PRINCIPAL*/
+
+
+.custom-text-color {
+    color: red;
+}
+
+/* Estilos para el título */
+.custom-title {
+    text-align: center; /* Centrar el texto horizontalmente */
+    font-size: 36px; /* Tamaño de fuente personalizado */
+    color: #333; /* Color de texto personalizado */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+/* Estilos para el subtítulo */
+.custom-subtitle {
+    text-align: center; /* Centrar el texto horizontalmente */
+    font-size: 18px; /* Tamaño de fuente personalizado */
+    color: #666; /* Color de texto personalizado */
+}
