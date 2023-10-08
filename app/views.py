@@ -42,8 +42,7 @@ def pagLogin(request):
         try:
             user = clientes.objects.get(correo=correo, clave=clave)
             if correo == 'admin@admin.cl' and clave == 'admin':
-                # Redirigir al usuario administrador a la página "pagPanel"
-                return redirect('pagPanel')  # Asegúrate de que 'pagPanel' sea el nombre correcto de tu URL
+                return redirect('pagPanel')
             request.session['correo'] = user.correo
             request.session['codigo'] = user.codigo
             return render(request, 'app/pagPrincipal.html')
