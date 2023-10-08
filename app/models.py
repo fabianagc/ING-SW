@@ -35,7 +35,7 @@ class reserva(models.Model):
     fecha_entrada = models.DateField(max_length=20)
     fecha_salida = models.DateField(max_length=20)
     estado_reserva = models.CharField(max_length=20)
-    cliente = models.ForeignKey('Clientes', on_delete=models.CASCADE)
+    cliente = models.ForeignKey('clientes', on_delete=models.CASCADE)
     nro_personas = models.CharField(max_length=20)
 
 

@@ -10,7 +10,7 @@ def pagPrincipal(request):
 
 def pagUregistro(request):
     reservaList = reserva.objects.all()
-    return render(request, "app/pagUregistro.html", {"reserva":reservaList} )
+    return render(request, "app/pagUregistro.html", {"reserva":reservaList})
 
 def pagPanel(request):
     return render (request,"app/pagPanel.html")
@@ -34,11 +34,16 @@ def pagHabitacion(request):
     return render(request, "app/pagHabitacion.html", {"habitacion":habitacionList} )
 
 
+
 def pagLogin(request):
     if request.method == 'POST':
+        correo = request.POST['correo']
+        clave = request.POST['clave']
         try:
-            user = clientes.objects.get(correo=request.POST['correo'], clave=request.POST['clave'])
-            print("Usuario=", user)
+            user = clientes.objects.get(correo=correo, clave=clave)
+            if correo == 'admin@admin.cl' and clave == 'admin':
+                # Redirigir al usuario administrador a la página "pagPanel"
+                return redirect('pagPanel')  # Asegúrate de que 'pagPanel' sea el nombre correcto de tu URL
             request.session['correo'] = user.correo
             request.session['codigo'] = user.codigo
             return render(request, 'app/pagPrincipal.html')
@@ -78,13 +83,24 @@ def pagEditar(request, id):
 
 def pagEdicion(request):
     codigo = request.POST['txtCodigo']
-    nombre = request.POST['txtNombre1']
+    nombre1 = request.POST['txtNombre1']
+    nombre2 = request.POST['txtNombre2']
+    apellido1 = request.POST['txtApellido1']
+    apellido2 = request.POST['txtApellido2']
+    direccion = request.POST['txtDireccion']
     correo = request.POST['txtCorreo']
+    clave = request.POST['txtClave']
+
 
     e_clientes = clientes.objects.get(codigo=codigo)
     e_clientes.codigo = codigo
-    e_clientes.p_nombre = nombre
+    e_clientes.p_nombre = nombre1
+    e_clientes.s_nombre = nombre2
+    e_clientes.apellido_p = apellido1
+    e_clientes.apellido_m = apellido2
+    e_clientes.direccion = direccion
     e_clientes.correo = correo
+    e_clientes.clave = clave
     e_clientes.save()
     return redirect('pagADM')
 
@@ -199,7 +215,7 @@ def pagRegistroR(request):
 def pagEliminarR(request, id):
     e_reserva = reserva.objects.get(num_reserva=id)
     e_reserva.delete()
-    return redirect('pagEliminarR')
+    return redirect('pagUregistro')
 
 def pagEditarR(request, id):
     a_reserva = reserva.objects.get(num_reserva=id)
@@ -218,7 +234,14 @@ def pagEdicionR(request):
     e_reserva.fecha_entrada = fecha1
     e_reserva.fecha_salida = fecha2
     e_reserva.estado_reserva = estado
-    e_reserva.cliente = cliente
+    e_cliente = clientes.objects.get(codigo=cliente)
+    e_cliente.codigo = cliente
     e_reserva.nro_personas = nro_personas
     e_reserva.save()
     return redirect('pagUregistro')
+
+
+
+
+
+

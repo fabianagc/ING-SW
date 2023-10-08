@@ -1,39 +1,39 @@
-{% extends "./pagBase.html" %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-{% block title %}Panel de administracion{% endblock %}
 
-
-{% block body %}
-<div class="row">
-    <div class="col-md-8 offset-md-2">
+<div class="row justify-content-center align-items-center">
+    <div class="col-md-8">
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-            <H2>Edicion de reserva</H2>
+            <h2 class="text-center">Edición de reserva</h2>
             <div class="card">
                 <div class="card-body">
-                    <form action="/pagEdicionR/" method="POST">{% csrf_token %}                                  
-                    <div class="form-group">
-                        <input type="text" id="txtReserva" name="txtReserva" value="{{reserva.num_reserva}}" class="form-control" placeholder="Numero habitacion" maxlength="15" readonly required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="txtFechaE" name="txtFechaE" value="{{reserva.fecha_entrada}}" class="form-control" placeholder="Fecha de entrada" maxlength="50" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="txtFechaS" name="txtFechaS" value="{{reserva.fecha_salida}}" class="form-control" placeholder="Fecha de salida" maxlength="50" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="txtEstado" name="txtEstado" value="{{estado_reserva.estado_reserva}}" class="form-control" placeholder="Apellido1" maxlength="50" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="txtCliente" name="txtCliente" value="{{reserva.cliente}}" class="form-control" placeholder="Apellido2" maxlength="50" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="txtPersonas" name="txtPersonas" value="{{reserva.nro_personas}}" class="form-control" placeholder="Direccion" maxlength="50" required>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-block text-white"> Guardar </button>
-                    </div>
-                </div>            
+                    <form action="/pagEdicionR/" method="POST">
+                        {% csrf_token %}                                  
+                        <div class="form-group">
+                            <input type="text" id="txtReserva" name="txtReserva" value="{{reserva.num_reserva}}" class="form-control" placeholder="Número habitación" maxlength="15" readonly required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="txtFechaE" name="txtFechaE" value="{{reserva.fecha_entrada}}" class="form-control" placeholder="Fecha de entrada" maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="txtFechaS" name="txtFechaS" value="{{reserva.fecha_salida}}" class="form-control" placeholder="Fecha de salida" maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtEstado" name="txtEstado" value="{{estado_reserva.estado_reserva}}" class="form-control" placeholder="Estado de reserva" maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtCliente" name="txtCliente" value="{{reserva.cliente}}" class="form-control" placeholder="Cliente" maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtPersonas" name="txtPersonas" value="{{reserva.nro_personas}}" class="form-control" placeholder="Cantidad personas" maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
+        </div>
     </div>
 </div>
-{% endblock %}
